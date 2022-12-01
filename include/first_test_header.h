@@ -3,8 +3,6 @@
 
 #include <string>
 
-void PrintOutText(const std::string& text);
-void PrintOutTextAndValue(const std::string& text, const int& value);
 int CalculateSumOfNInRange (const int &beg, const int &end);
 double CeliusToFahrenheit(const double &celsius);
 
