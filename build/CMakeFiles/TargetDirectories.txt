@@ -1,0 +1,3 @@
+/home/andrei/Desktop/2022/build/CMakeFiles/rebuild_cache.dir
+/home/andrei/Desktop/2022/build/CMakeFiles/edit_cache.dir
+/home/andrei/Desktop/2022/build/CMakeFiles/program.dir

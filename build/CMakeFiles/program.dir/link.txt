@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/program.dir/main.cpp.o CMakeFiles/program.dir/armstrong.cpp.o CMakeFiles/program.dir/suma.cpp.o  -o program 
