@@ -1,6 +1,6 @@
 #include "math_function.h"
 
-int factorial_recursiv(int n){
+long long int factorial_recursiv(int n){
 	if(n==0)
 		return 1;
 
