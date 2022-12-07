@@ -1,0 +1,1 @@
+/usr/bin/aarch64-linux-gnu-g++ -g CMakeFiles/tema1.dir/main.cpp.o CMakeFiles/tema1.dir/dog.cpp.o CMakeFiles/tema1.dir/cat.cpp.o -o tema1 

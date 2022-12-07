@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/lys/Desktop/tema1/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++   -g -o CMakeFiles/tema1.dir/main.cpp.o -c /home/lys/Desktop/tema1/main.cpp",
+  "file": "/home/lys/Desktop/tema1/main.cpp"
+},
+{
+  "directory": "/home/lys/Desktop/tema1/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++   -g -o CMakeFiles/tema1.dir/dog.cpp.o -c /home/lys/Desktop/tema1/dog.cpp",
+  "file": "/home/lys/Desktop/tema1/dog.cpp"
+},
+{
+  "directory": "/home/lys/Desktop/tema1/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++   -g -o CMakeFiles/tema1.dir/cat.cpp.o -c /home/lys/Desktop/tema1/cat.cpp",
+  "file": "/home/lys/Desktop/tema1/cat.cpp"
+}
+]

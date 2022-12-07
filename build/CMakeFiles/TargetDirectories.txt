@@ -1,0 +1,3 @@
+/home/lys/Desktop/tema1/build/CMakeFiles/tema1.dir
+/home/lys/Desktop/tema1/build/CMakeFiles/edit_cache.dir
+/home/lys/Desktop/tema1/build/CMakeFiles/rebuild_cache.dir
