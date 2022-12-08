@@ -1,8 +1,9 @@
 #include <iostream>
-#include "function.h"
+#include "functions.h"
 
 int main()
 {
-    for (int i=0; i<10; i++)
-        isEven(i);
+    isEven(5);
+    std::cout << "Cmmdc: " <<cmmdc(10,2) << '\n';
+  
 }
