@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/cristi/2022/build",
+  "command": "/usr/bin/g++  -I/home/cristi/2022/headers -g -o CMakeFiles/2022.dir/Cucubau.cpp.o -c /home/cristi/2022/Cucubau.cpp",
+  "file": "/home/cristi/2022/Cucubau.cpp"
+},
+{
+  "directory": "/home/cristi/2022/build",
+  "command": "/usr/bin/g++  -I/home/cristi/2022/headers -g -o CMakeFiles/2022.dir/JohnWick.cpp.o -c /home/cristi/2022/JohnWick.cpp",
+  "file": "/home/cristi/2022/JohnWick.cpp"
+},
+{
+  "directory": "/home/cristi/2022/build",
+  "command": "/usr/bin/g++  -I/home/cristi/2022/headers -g -o CMakeFiles/2022.dir/main.cpp.o -c /home/cristi/2022/main.cpp",
+  "file": "/home/cristi/2022/main.cpp"
+}
+]
