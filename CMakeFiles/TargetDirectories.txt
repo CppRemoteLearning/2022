@@ -1,0 +1,3 @@
+/home/andreea/2022/project1/CMakeFiles/rebuild_cache.dir
+/home/andreea/2022/project1/CMakeFiles/edit_cache.dir
+/home/andreea/2022/project1/CMakeFiles/project1.dir
