@@ -1,1 +1,0 @@
-/usr/bin/g++  -g   CMakeFiles/project1.dir/file1.cpp.o CMakeFiles/project1.dir/file2.cpp.o CMakeFiles/project1.dir/file3.cpp.o  -o project1 
