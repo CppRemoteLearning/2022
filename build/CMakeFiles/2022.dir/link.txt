@@ -1,1 +1,0 @@
-/usr/bin/g++ -g -rdynamic CMakeFiles/2022.dir/Cucubau.cpp.o CMakeFiles/2022.dir/JohnWick.cpp.o CMakeFiles/2022.dir/main.cpp.o -o 2022 
