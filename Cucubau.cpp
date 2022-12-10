@@ -3,8 +3,7 @@ class Cucubau
 {
     public:
     MyString* OneLiner;
-    Cucubau(std::string newValue)
-    {
+    Cucubau(std::string newValue){
         OneLiner = new MyString(newValue);
     }
 };
