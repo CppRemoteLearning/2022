@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.22)
+project(manage_store)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
+file(GLOB_RECURSE SRC_FILES ${PROJECT_SOURCE_DIR}/*.cc)
+add_executable(manage_store ${SRC_FILES})

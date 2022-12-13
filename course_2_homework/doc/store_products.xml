@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Store>
+    <product>
+        <id>349021</id>
+        <name>Paper</name>
+        <category>stationery</category>
+        <origin>Italy</origin>
+        <price>5.2</price>
+    </product>
+    <product>
+        <id>451288</id>
+        <name>Pencil</name>
+        <category>stationery</category>
+        <origin>Germany</origin>
+        <price>12.5</price>
+    </product>
+    <product>
+        <id>987654</id>
+        <name>The Clean Coder</name>
+        <category>book</category>
+        <origin>U.K.</origin>
+        <price>25.49</price>
+    </product>
+</Store>
