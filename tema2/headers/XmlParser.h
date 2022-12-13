@@ -12,5 +12,5 @@ private:
 public:
     XmlParser(std::string file) : filePath(file){};
     // function to read the xml file and return a map containg all its data
-    void readProductInfo(std::map<std::string, std::pair<double, int>> &productInfo);
+    void readProductInfo(std::map<std::string, std::pair<std::string, std::string>> &productInfo);
 };

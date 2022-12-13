@@ -1,0 +1,12 @@
+<products>
+    <product>
+        <name>Product1</name>
+        <price>10</price>
+        <quantity>100</quantity>
+    </product>
+    <product>
+        <name>Product2</name>
+        <price>20</price>
+        <quantity>200</quantity>
+    </product>
+</products>

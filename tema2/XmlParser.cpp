@@ -1,39 +1,45 @@
 #include "headers/XmlParser.h"
+#include <cstdlib>
 
-void XmlParser::readProductInfo(std::map<std::string, std::pair<double, int>> &productInfo)
+void XmlParser::readProductInfo(std::map<std::string, std::pair<std::string, std::string>> &productInfo)
+{
+    std::ifstream file(filePath);
+    std::string line;
+    if (!file.is_open())
+        std::cout << "file not opened";
+    std::string name, price, quantity;
+    while (getline(file, line))
     {
-        std::ifstream file(filePath);
-        std::string line;
-        while (getline(file, line))
+        // if the line contains the closing tag /product, we add the variables into the colection and reset them
+        if (line.find("</product>") != std::string::npos)
         {
-            std::string name;
-            double price;
-            int quantity;
-            // if the line contains the closing tag /product, we add the variables into the colection and reset them
-            if (line.find("</product>") != std::string::npos)
-            {
-                productInfo[name] = std::pair<double, int>(price, quantity);
-                name = "";
-                price = 0;
-                quantity = 0;
-            }
-            //if the line contains the word product we can skip over it 
-            if(line.find("product") != std::string::npos)
-            {
-                continue;
-            }
-            // check to see if the line contains any tag (name price quantity)
-            if (line.find("<name>") != std::string::npos)
-            {
-                name = line.substr(6, line.size() - 13);
-            }
-            else if (line.find("<price>") != std::string::npos)
-            {
-                price = std::stod(line.substr(7, line.size() - 15));
-            }
-            else if (line.find("<quantity>") != std::string::npos)
-            {
-                quantity = std::stoi(line.substr(10, line.size() - 19));
-            }
+            productInfo[name] = std::pair<std::string, std::string>(price, quantity);
+            name = "";
+            price = "";
+            quantity = "";
+        }
+        // if the line contains the word product we can skip over it
+        if (line.find("product") != std::string::npos)
+        {
+            continue;
+        }
+        // check to see if the line contains any tag (name price quantity)
+        if (line.find("<name>") != std::string::npos)
+        {
+            int pos = line.find(">") + 1;
+            name = line.substr(pos, line.find("</name>") - pos);
+        }
+        else if (line.find("<price>") != std::string::npos)
+        {
+            int pos = line.find(">") + 1;
+            price = line.substr(pos, line.find("</price>") - pos);
+            // price = std::stod(line.substr(pos, line.find("</price>") - pos));
+        }
+        else if (line.find("<quantity>") != std::string::npos)
+        {
+            int pos = line.find(">") + 1;
+            quantity = line.substr(pos, line.find("</quantity>") - pos);
+            // quantity = strtod(num.c_str(),nullptr);
         }
     }
+}
