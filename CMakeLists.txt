@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 project(NagarroProjects VERSION 0.0.1)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
 file(GLOB_RECURSE H1_SRC ${PROJECT_SOURCE_DIR}/course_1_homework/*.cpp)
 file(GLOB_RECURSE H2_SRC ${PROJECT_SOURCE_DIR}/course_2_homework/*.cc)
 add_executable(homework_1 ${H1_SRC})
