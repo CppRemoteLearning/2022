@@ -32,12 +32,13 @@ class Reader {
             rapidxml::xml_node<>* root = doc.first_node("products");
 
             //Loop through all the nodes
+            /*
             for (rapidxml::xml_node<>* node = root->first_node(); node; node = node->next_sibling())
             {
                 cout << "Product name: " << node->name() << '\n';
                 cout << "Product value" << node->value() << '\n';
             }
-            
+            */
         }
 
 };
