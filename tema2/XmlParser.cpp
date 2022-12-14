@@ -3,6 +3,26 @@
 #include <iostream>
 #include <fstream>
 
+XmlParser& XmlParser::operator=(const XmlParser& other)
+{
+    if(this != &other)
+    {
+        //we are able to acces other.filepath although  filepath is private because 
+        //the special member functions have acces to the private members of the class
+        filePath = other.filePath;
+    }
+    return *this;
+}
+
+XmlParser& XmlParser::operator=(XmlParser&& other)
+{
+    if(this != &other)
+    {
+        filePath = std::move(other.filePath);
+    }
+    return *this;
+}
+
 void XmlParser::readProductInfo(std::map<std::string, std::pair<std::string, std::string>> &productInfo)
 {
     std::ifstream file(filePath);
