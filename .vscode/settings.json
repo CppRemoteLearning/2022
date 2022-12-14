@@ -46,6 +46,7 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
+        "sstream": "cpp"
     },
     "cmake.sourceDirectory": "${workspaceFolder}/tema2"
 }

@@ -1,4 +1,5 @@
 #include "headers/Product.h"
+#include <iostream>
 
 Product& Product::operator=(const Product& other)
 {
