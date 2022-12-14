@@ -38,7 +38,7 @@ void XmlParser::readProductInfo(std::map<std::string, std::pair<std::string, std
         // if the line contains the closing tag /product, we add the variables into the colection and reset them
         if (line.find("</product>") != std::string::npos)
         {
-            productInfo[name] = std::pair<std::string, std::string>(price, quantity);
+            productInfo[name] = std::make_pair(price, quantity);
             name = "";
             price = "";
             quantity = "";
