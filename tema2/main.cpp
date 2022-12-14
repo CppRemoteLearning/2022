@@ -1,9 +1,9 @@
 #include "headers/XmlParser.h"
+#include <iostream>
 
-using namespace std;
 int main(){
     XmlParser parser = XmlParser("file.xml");
-    map<string, pair<string, string>> out;
+    std::map<std::string, std::pair<std::string, std::string>> out;
     parser.readProductInfo(out);
-    cout<<out["Product1"].first;
+    std::cout<<out["Product1"].first;
 }

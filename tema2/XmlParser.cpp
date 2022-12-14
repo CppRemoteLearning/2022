@@ -1,12 +1,17 @@
 #include "headers/XmlParser.h"
 #include <cstdlib>
+#include <iostream>
+#include <fstream>
 
 void XmlParser::readProductInfo(std::map<std::string, std::pair<std::string, std::string>> &productInfo)
 {
     std::ifstream file(filePath);
     std::string line;
     if (!file.is_open())
+    {
         std::cout << "file not opened";
+        return;
+    }    
     std::string name, price, quantity;
     while (getline(file, line))
     {
