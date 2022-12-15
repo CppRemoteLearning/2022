@@ -4,21 +4,28 @@
         <id>349021</id>
         <name>Paper</name>
         <category>stationery</category>
-        <origin>1000</origin>
+        <quantity>1000</quantity>
         <price>5.2</price>
     </product>
     <product>
         <id>451288</id>
         <name>Pencil</name>
         <category>stationery</category>
-        <origin>235</origin>
+        <quantity>235</quantity>
         <price>12.5</price>
     </product>
     <product>
         <id>987654</id>
         <name>The Clean Coder</name>
         <category>book</category>
-        <origin>98</origin>
+        <quantity>98</quantity>
         <price>25.49</price>
+    </product>
+    <product>
+        <id>452901</id>
+        <name>Magic</name>
+        <category>unknown</category>
+        <quantity>1</quantity>
+        <price>0.01</price>
     </product>
 </Store>

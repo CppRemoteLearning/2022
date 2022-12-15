@@ -54,6 +54,12 @@ bool Product::operator==(Product const& other) const{
   return false;
 }
 
+bool Product::operator<(Product const& other) const{
+  if(name_ < other.name_)
+    return true;
+  return false;
+}
+
 unsigned int Product::GetId() const{
   return id_;
 }
@@ -72,6 +78,26 @@ unsigned int Product::GetQuantity() const{
 
 float Product::GetPrice() const{
   return price_;
+}
+
+void Product::SetId(unsigned int const& id){
+  id_ = id;
+}
+
+void Product::SetName(std::string const& name){
+  name_ = name;
+}
+
+void Product::SetCategory(std::string const& category){
+  category_ = category;
+}
+
+void Product::SetQuantity(unsigned int const& quantity){
+  quantity_ = quantity;
+}
+
+void Product::SetPrice(float const& price){
+  price_ = price;
 }
 
 void Product::visit(void (*f)(unsigned int&, std::string&, std::string&, unsigned int&, float&)){

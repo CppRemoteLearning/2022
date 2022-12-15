@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 
+#include "product.h"
+
 class XMLReaderWriter{
 public:
   XMLReaderWriter();
@@ -15,15 +17,15 @@ public:
   XMLReaderWriter& operator=(XMLReaderWriter const& other);  //copy asignment constructor
   XMLReaderWriter& operator=(XMLReaderWriter&& other) noexcept; //move asignment constructor
   ~XMLReaderWriter();
-  std::vector<std::string> ReadFileContent();
-  void WriteFileContent();
+  std::vector<std::string> ReadContent();
+  void WriteContent(std::vector<Product> const& data, std::string const& name);
   std::vector<std::string> GetContent() const;
   std::string GetPath() const;
   bool SetPath(std::string const& path);
-   bool Exist(std::string const& path) const;
 private:
- 
+  bool Exist(std::string const& path) const;
   bool OpenFile(std::ifstream& input_file) const;
+  void WriteProduct(std::ofstream& output_file, Product const& product);
   std::string path_;
   std::vector<std::string> content_;
 };

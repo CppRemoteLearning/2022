@@ -78,27 +78,53 @@ StoreManager::~StoreManager(){
 void StoreManager::LoadData(std::string const& path){
   XMLReaderWriter xml(path);
   XMLParser parser;
-  data_ = parser.Parse(xml.ReadFileContent());
+  data_ = parser.Parse(xml.ReadContent());
+  no_of_products_ = data_.size();
 }
 
-StoreManager StoreManager::Add(Product const& product){
+void StoreManager::ExportToXML(std::string const& path, std::string const& file_name){
+  std::string full_path = path+file_name;
+  XMLReaderWriter xml(full_path);
+  xml.WriteContent(data_, name_);
+}
+
+StoreManager& StoreManager::Add(Product const& product){
   return (*this) + product;
 }
 
-StoreManager StoreManager::Add(std::vector<Product> const& products){
+StoreManager& StoreManager::Add(std::vector<Product> const& products){
   return (*this) + products;
 }
 
-StoreManager StoreManager::Remove(Product const& product){
+StoreManager& StoreManager::Remove(Product const& product){
   return (*this) - product;
 }
 
-StoreManager StoreManager::Remove(std::vector<Product> const& products){
+StoreManager& StoreManager::Remove(std::vector<Product> const& products){
   return (*this) - products;
+}
+
+StoreManager& StoreManager::Merge(StoreManager const& other){
+  if(this != &other){
+    for(auto const& iterator : other.data_){
+      auto it_temp = std::find(data_.begin(), data_.end(), iterator);
+      if(it_temp == data_.end()){
+        data_.push_back(iterator);
+	no_of_products_++;
+      }
+    }
+  }
+  return *this;
+}
+
+StoreManager& StoreManager::Sort(){
+  std::sort(data_.begin(), data_.end());
+  return *this;
 }
 
 StoreManager& StoreManager::operator+(Product const& product){
   data_.push_back(product);
+  no_of_products_++;
   return *this;
 }
 
@@ -112,6 +138,7 @@ StoreManager& StoreManager::operator-(Product const& product){
   auto iterator = std::find(data_.begin(), data_.end(), product);
   data_.erase(iterator);
   data_.shrink_to_fit(); //remove unused capacity afeter deletion
+  no_of_products_--;
   return *this;
 }
 
@@ -123,6 +150,10 @@ StoreManager& StoreManager::operator-(std::vector<Product> const& products){
 
 std::vector<Product> StoreManager::GetData()const{
   return data_;
+}
+
+void StoreManager::SetName(std::string const& name) {
+  name_ = name;
 }
 
 void StoreManager::ShowInTable(){
@@ -147,6 +178,7 @@ void StoreManager::PrintRow(unsigned int& id, std::string& name, std::string& ca
 
 void StoreManager::PrintHeader(){
   std::cout << "\n\n";
+  std::cout << name_ << ": " << no_of_products_ << " products\n";
   std::cout << std::left << std::setw(10) << "id";
   std::cout << std::left << std::setw(20) << "name";
   std::cout << std::left << std::setw(20) << "category";

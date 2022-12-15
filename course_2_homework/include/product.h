@@ -16,11 +16,17 @@ public:
   Product& operator=(Product&& other) noexcept; //move asignment constructor
   ~Product();
   bool operator==(Product const& other) const;
+  bool operator<(Product const& other) const;
   unsigned int GetId() const;
   std::string GetName() const;
   std::string GetCategory() const;
   unsigned int GetQuantity() const;
   float GetPrice() const;
+  void SetId(unsigned int const& id);
+  void SetName(std::string const& name);
+  void SetCategory(std::string const& category);
+  void SetQuantity(unsigned int const& quantity);
+  void SetPrice(float const& price);
   void visit(void (*f)(unsigned int&,std::string&,std::string&,unsigned int&,float&));
 private:
   unsigned int id_;

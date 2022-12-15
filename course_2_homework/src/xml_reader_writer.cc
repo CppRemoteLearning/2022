@@ -56,7 +56,7 @@ XMLReaderWriter& XMLReaderWriter::operator=(XMLReaderWriter&&  other) noexcept{
 
 XMLReaderWriter::~XMLReaderWriter(){}
 
-std::vector<std::string> XMLReaderWriter::ReadFileContent(){
+std::vector<std::string> XMLReaderWriter::ReadContent(){
   std::ifstream input_file;
   if(OpenFile(input_file)){
     std::string row;
@@ -64,6 +64,27 @@ std::vector<std::string> XMLReaderWriter::ReadFileContent(){
       content_.push_back(row);
     }
   return content_;
+}
+
+void XMLReaderWriter::WriteContent(std::vector<Product> const& data, std::string const& name){
+  try{
+    if(Exist(path_))
+      throw std::invalid_argument(path_ + " invalid file path!");
+
+    std::ofstream output_file(path_);
+    output_file << "<?xml version='1.0' encoding='UTF-8'?>\n";
+    output_file << "<" << name << ">\n";
+
+    for(auto iterator : data)
+      WriteProduct(output_file, iterator);
+    
+    output_file << "</" << name << ">";
+    output_file.close();
+  }
+  catch(const std::invalid_argument& event){
+    std::cout << event.what() << std::endl;
+    std::cout << "There is another file with the same name!" << std::endl;
+  }
 }
 
 std::vector<std::string> XMLReaderWriter::GetContent()const{
@@ -83,7 +104,7 @@ bool XMLReaderWriter::SetPath(std::string const& path){
     throw std::invalid_argument(path + " invalid file path!");
   }
   catch (const std::invalid_argument& event){
-    std::cout << event.what();
+    std::cout << event.what() << std::endl;
     return false;
   }
 }
@@ -103,7 +124,17 @@ bool XMLReaderWriter::OpenFile(std::ifstream& input_file) const{
     throw std::invalid_argument(path_ + " invalid file path!");
   }
   catch(const std::invalid_argument& event){
-    std::cout << event.what();
+    std::cout << event.what() << std::endl;
     return false;
   }
+}
+
+void XMLReaderWriter::WriteProduct(std::ofstream& output_file, Product const& product){
+  output_file << "\t<product>\n";
+  output_file << "\t\t<id>" << product.GetId() << "</id>\n";
+  output_file << "\t\t<name>" << product.GetName() << "</name>\n";
+  output_file << "\t\t<category>" << product.GetCategory() << "</category>\n";
+  output_file << "\t\t<quantity>" << product.GetQuantity() << "</quantity>\n";
+  output_file << "\t\t<price>" << product.GetPrice() << "</price>\n";
+  output_file << "\t</product>\n";
 }
