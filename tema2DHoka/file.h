@@ -2,16 +2,17 @@
 #include <iostream>
 #include <fstream>
 #include "store.h"
-using namespace std;
 
 //StoreSerializer
 //StoreReadWrite
 //StoreIO
 //..
 class StoreIO {
-    string name;
     public:
-    StoreIO(string file_name) : name(file_name) {}
+    StoreIO(std::string file_name);
+    ~StoreIO() {}
     void read(Store& store);
     void write(Store& store);
+    private:
+    std::string name;
 };
