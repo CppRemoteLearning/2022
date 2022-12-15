@@ -16,6 +16,14 @@ XMLHandler::XMLHandler(std::string file, std::vector<std::pair<std::string, doub
   file_content_ = file_content;
 }
 
+XMLHandler::XMLHandler(std::string file, std::list<Product> file_content)
+{
+  path_to_file_ = file;
+  for (auto it = file_content.begin(); it != file_content.end(); ++it)
+  {
+    file_content_.push_back(std::make_pair((*it).getName(), (*it).getPrice()));
+  }
+}
 
 // XMLHandler::~XMLHandler()
 // {
@@ -53,7 +61,7 @@ XMLHandler& XMLHandler::operator=(XMLHandler&& other)
   return *this;
 }
 
-std::vector<std::pair<std::string, double>> XMLHandler::readFromFile()
+void XMLHandler::readFromFile()
 {
   std::cout << "XMLHandler::readFromFile called." << std::endl;
   std::ifstream xmlFile;
@@ -100,4 +108,5 @@ void XMLHandler::writeToFile()
     xmlFile << "\t\t<price>" << (*it).second << "</price>\n\t</product>\n";
   }
   xmlFile << "</Store>";
+  xmlFile.close();
 }

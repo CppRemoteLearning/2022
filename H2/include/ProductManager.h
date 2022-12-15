@@ -3,22 +3,27 @@
 
 #include "Product.h"
 #include <list>
-#include <iostream>
+#include <string>
 
 class ProductManager
 {
-private:
-  std::list<ProductManager> productList;
 public:
-  ProductManager(std::list<ProductManager> prods);
-  ~ProductManager();
+  ProductManager();
+  ProductManager(std::list<Product> prods);
+  ~ProductManager() {}
   ProductManager(const ProductManager& other);
   ProductManager(ProductManager&& other);
   ProductManager& operator=(const ProductManager& other);
-  ProductManager& operator=(ProductManager &&other);
-  std::ostream& operator<<(std::ostream& os);
-  void removeFromStore();
-  void addToStore();
+  ProductManager& operator=(ProductManager&& other);
+  //std::ostream& operator<<(std::ostream& os);
+  void removeFromStore(Product item);
+  void addToStore(Product item);
+  void saveToFile(std::string path_to_file);
+  void printProducts();
+  void readFromFile(std::string path_to_file);
+
+private:
+  std::list<Product> productList_;
 };
 
 #endif

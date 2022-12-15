@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Store>
+	<product>
+		<name>Keyboard</name>
+		<price>175.76</price>
+	</product>
+	<product>
+		<name>Monitor</name>
+		<price>330.23</price>
+	</product>
+</Store>

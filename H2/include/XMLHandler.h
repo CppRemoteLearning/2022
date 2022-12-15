@@ -5,19 +5,21 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <list>
 
 class XMLHandler
 {
 public:
   XMLHandler(std::string file);
   XMLHandler(std::string file, std::vector<std::pair<std::string, double>> file_content);
+  XMLHandler(std::string file, std::list<Product> file_content);
   ~XMLHandler() {}
-  std::vector<std::pair<std::string, double>> getValues() {return file_content_;}
   XMLHandler (const XMLHandler& other);
   XMLHandler (XMLHandler&& other);
   XMLHandler& operator=(const XMLHandler& other);
   XMLHandler& operator=(XMLHandler &&other);
-  std::vector<std::pair<std::string, double>> readFromFile();
+  std::vector<std::pair<std::string, double>> getValues() {return file_content_;}
+  void readFromFile();
   void writeToFile();
 
 private:

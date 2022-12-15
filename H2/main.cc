@@ -1,5 +1,6 @@
 #include "include/XMLHandler.h"
 #include "include/Product.h"
+#include "include/ProductManager.h"
 #include <string>
 #include <vector>
 #include <utility>
@@ -8,32 +9,17 @@
 
 int main()
 {
-  XMLHandler Handler = XMLHandler("store.xml");
-  Handler.readFromFile();
-  std::vector<std::pair<std::string, double>> values = Handler.getValues();
-  //Handler.writeToFile();
+  ProductManager Store;
+  Store.addToStore(Product("Mouse", 150.0));
+  Store.addToStore(Product("Keyboard", 175.76));
+  Store.addToStore(Product("Monitor", 330.23));
+  Store.printProducts();
+  Store.removeFromStore(Product("Mouse", 150.0));
+  Store.printProducts();
+  Store.saveToFile("storeTest.xml");
 
-  for (auto it = values.begin(); it != values.end(); ++it)
-  {
-    std::cout << (*it).first << " " << (*it).second << std::endl;
-  }
-  
-  Product mouse = Product("Mouse", 150.0);
-  Product keyboard = Product("Keyboard", 175.76);
-  Product monitor = Product("Monitor", 330.23);
-
-
-  values.push_back(std::make_pair(mouse.getName(), mouse.getPrice()));
-  values.push_back(std::make_pair(keyboard.getName(), keyboard.getPrice()));
-  values.push_back(std::make_pair(monitor.getName(), monitor.getPrice()));
-
-  for (auto it = values.begin(); it != values.end(); ++it)
-  {
-    std::cout << (*it).first << " " << (*it).second << std::endl;
-  }
-  
-  XMLHandler XMLHandler2 = XMLHandler("store.xml", values);
-
-  XMLHandler2.writeToFile();
+  ProductManager Store2;
+  Store2.readFromFile("store.xml");
+  Store2.printProducts();
 
 }  
