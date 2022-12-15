@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Store>
-    <product>
-        <name>Battery</name>
-        <price>5.2</price>
-    </product>
-    <product>
-        <name>Lamp</name>
-        <price>12.5</price>
-    </product>
-    <product>
-        <name>Mug</name>
-        <price>7.99</price>
-    </product>
+	<product>
+		<name>Battery</name>
+		<price>5.2</price>
+	</product>
+	<product>
+		<name>Lamp</name>
+		<price>12.5</price>
+	</product>
+	<product>
+		<name>Mug</name>
+		<price>7.99</price>
+	</product>
+	<product>
+		<name>Mouse</name>
+		<price>150</price>
+	</product>
+	<product>
+		<name>Keyboard</name>
+		<price>175.76</price>
+	</product>
+	<product>
+		<name>Monitor</name>
+		<price>330.23</price>
+	</product>
 </Store>

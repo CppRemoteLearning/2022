@@ -5,19 +5,20 @@
 
 class Product
 {
-private:
-  std::string name;
-  double price;
 public:
   Product(std::string name, double price);
-  ~Product();
-  Product (const Product& other) = default;
-  Product (Product&& other) = default;
+  ~Product() {}
+  Product (const Product& other);
+  Product (Product&& other);
   Product& operator=(const Product& other);
   Product& operator=(Product &&other);
   bool operator==(const Product& other);
-  std::string getName();
-  double getPrice();
+  std::string getName() const;
+  double getPrice() const;
+
+private:
+  std::string name_;
+  double price_;
 };
 
 #endif

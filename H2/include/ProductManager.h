@@ -12,12 +12,13 @@ private:
 public:
   ProductManager(std::list<ProductManager> prods);
   ~ProductManager();
-  ProductManager(const ProductManager& other) = default;
-  ProductManager(ProductManager&& other) = default;
+  ProductManager(const ProductManager& other);
+  ProductManager(ProductManager&& other);
   ProductManager& operator=(const ProductManager& other);
   ProductManager& operator=(ProductManager &&other);
-  bool operator==(const ProductManager& other);
   std::ostream& operator<<(std::ostream& os);
+  void removeFromStore();
+  void addToStore();
 };
 
 #endif

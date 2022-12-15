@@ -1,4 +1,4 @@
-MAKE_MINIMUM_REQUIRED (VERSION 3.2)
+CMAKE_MINIMUM_REQUIRED (VERSION 3.2)
 project (ProductManager)
 add_executable(main main.cc
                 src/Product.cc
