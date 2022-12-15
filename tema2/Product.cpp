@@ -1,5 +1,5 @@
 #include "headers/Product.h"
-#include <iostream>
+#include <ostream>
 
 Product& Product::operator=(const Product& other)
 {
@@ -23,4 +23,10 @@ Product& Product::operator=(Product&& other)
         Quantity = other.Quantity;
     }
     return *this;
+}
+
+std::ostream& operator<<(std::ostream& os, const Product& product)
+{
+    os << product.Name << ": Price->"<<product.Price<<", Quantity->"<<product.Quantity;
+    return os;
 }

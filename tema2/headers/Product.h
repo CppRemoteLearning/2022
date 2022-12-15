@@ -24,4 +24,7 @@ public:
     Product &operator=(Product &&other);
     // Destructor
     ~Product() {}
+
+    //override for << operator
+    friend std::ostream& operator<<(std::ostream& os, const Product& product);
 };
