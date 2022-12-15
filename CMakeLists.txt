@@ -1,18 +1,18 @@
 cmake_minimum_required(VERSION 3.22)
 
+project(tema2)
+add_executable(tema2 main.cpp product.cpp store.cpp XMLObject.cpp)
 
 include_directories(/usr/include/rapidxml)
 
 
-#include_directories(${rapidxml_INCLUDE_DIRS})
-
-
-find_library(rapidxml rapidxml NAMES rapidXML librapidxml-dev)
-if (NOT ${rapidxml})
-    message(STATUS "library found")
-else()
+find_library(RAPIDXML_LIB rapidXML NAMES rapidXML librapidxml-dev rapidxml)
+if (RAPIDXML_LIB)
     message(FATAL_ERROR "XML library not found")
+else()
+    message(STATUS "library found")
 endif()
 
-project(tema2)
-add_executable(tema2 main.cpp product.cpp store.cpp XMLObject.hpp)
+add_library(RAPIDXML_LIB INTERFACE)
+target_include_directories(RAPIDXML_LIB INTERFACE /usr/include)
+target_link_libraries(tema2 PRIVATE RAPIDXML_LIB)

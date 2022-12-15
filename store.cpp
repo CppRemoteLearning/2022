@@ -66,19 +66,9 @@
         return products; 
     }
 
-    //function to add products to the store's inventory
-    //TO DO: add code to read from a file
-    void Store::addProducts()
+    void Store::addProducts(const Product p)
     {
-        
-        Product product("", 0);
-        //testing purposes
-        for (int i=0; i<10; i++)
-            {
-                product.setName("lapte");
-                product.setPrice(i+i/0.33);
-                products.push_back(product);
-            }
+        products.push_back(p);
     }
 
     void Store::printProducts()

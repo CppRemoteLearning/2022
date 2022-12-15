@@ -37,7 +37,6 @@ class Store {
         const std::string& getName();
         const std::vector<Product>& getProducts();
 
-        //TO DO: add code to read from a file
-        void addProducts();
+        void addProducts(const Product p);
         void printProducts();
 };
