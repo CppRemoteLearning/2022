@@ -1,7 +1,9 @@
 #include "store.hpp"
 
-    Store::Store(std::string name_) : name(name_) {};
-    Store::Store(std::string name_, std::vector<Product> p) : name(name_), products(p) {}
+    Store::Store(std::string name_) : name(name_) 
+    {}
+    Store::Store(std::string name_, std::vector<Product> p) : name(name_), products(p) 
+    {}
 
     //Copy constructor
     Store::Store(const Store& s) : name(s.name), products(s.products)
@@ -14,7 +16,9 @@
     {
         std::cout << "copy assignment operator called\n";
         if (this == &s)
-            return *this;
+            {
+                return *this;
+            }
 
         name = s.name;
         products=s.products;
@@ -38,7 +42,9 @@
     {
         std::cout << "move assignment operator called\n";
         if (this == &s)
-            return *this;
+            {
+                return *this;
+            }
         
         name = s.name;
         products=s.products;
@@ -74,5 +80,7 @@
     void Store::printProducts()
     {
         for (auto i : products)
-            std::cout << i.getName() << ' ' << i.getPrice() << '\n';
+            {
+                std::cout << i.getName() << ' ' << i.getPrice() << '\n';
+            }
     }

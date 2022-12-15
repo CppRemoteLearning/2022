@@ -1,7 +1,8 @@
 #include "product.hpp"
 
 //Constructors
-Product::Product(std::string name_, double price_) : name(name_), price(price_) {}
+Product::Product(std::string name_, double price_) : name(name_), price(price_) 
+{}
 
 //Copy constructor
 Product::Product(const Product& p) : name(p.name), price(p.price) 
@@ -14,7 +15,9 @@ Product& Product::operator=(const Product& p)
 {
     std::cout << "copy assignment operator called\n";
     if (this == &p)
-        return *this;
+        {
+            return *this;
+        }
     name = p.name;
     price = p.price;
     return *this;
@@ -35,7 +38,9 @@ Product& Product::operator=(const Product&& p)
 {
     std::cout << "move assignment operator called\n";
     if (this == &p)
-        return *this;
+        {
+            return *this;
+        }
     name = p.name;
     price = p.price;
     return *this;

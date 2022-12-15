@@ -4,9 +4,6 @@
 
 
 class Product {
-    private:
-        std::string name;
-        double price;
     public:
         //Constructors
         Product();
@@ -32,4 +29,8 @@ class Product {
         //getters
         const std::string& getName() const;
         double getPrice() const;
+        
+    private:
+        std::string name;
+        double price;
 };

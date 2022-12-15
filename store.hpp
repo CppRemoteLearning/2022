@@ -5,9 +5,6 @@
 #include "product.hpp"
 
 class Store {
-    private:
-        std::string name;
-        std::vector<Product> products;
     public:
         //Constructors
         Store();
@@ -39,4 +36,8 @@ class Store {
 
         void addProducts(const Product p);
         void printProducts();
+        
+    private:
+        std::string name;
+        std::vector<Product> products;
 };
