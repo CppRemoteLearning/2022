@@ -1,3 +1,0 @@
-/home/adrian-ilie/Storage/~Courses/Nagarro/projects/course_2_homework/.build/CMakeFiles/store.dir
-/home/adrian-ilie/Storage/~Courses/Nagarro/projects/course_2_homework/.build/CMakeFiles/edit_cache.dir
-/home/adrian-ilie/Storage/~Courses/Nagarro/projects/course_2_homework/.build/CMakeFiles/rebuild_cache.dir
