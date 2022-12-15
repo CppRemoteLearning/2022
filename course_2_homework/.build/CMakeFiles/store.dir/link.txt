@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/store.dir/main.cc.o CMakeFiles/store.dir/src/product.cc.o CMakeFiles/store.dir/src/store_manager.cc.o CMakeFiles/store.dir/src/xml_parser.cc.o CMakeFiles/store.dir/src/xml_reader_writer.cc.o -o store 

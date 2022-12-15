@@ -4,21 +4,21 @@
         <id>349021</id>
         <name>Paper</name>
         <category>stationery</category>
-        <origin>Italy</origin>
+        <origin>1000</origin>
         <price>5.2</price>
     </product>
     <product>
         <id>451288</id>
         <name>Pencil</name>
         <category>stationery</category>
-        <origin>Germany</origin>
+        <origin>235</origin>
         <price>12.5</price>
     </product>
     <product>
         <id>987654</id>
         <name>The Clean Coder</name>
         <category>book</category>
-        <origin>U.K.</origin>
+        <origin>98</origin>
         <price>25.49</price>
     </product>
 </Store>

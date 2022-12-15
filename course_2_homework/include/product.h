@@ -1,23 +1,32 @@
 #ifndef MANAGE_STORE_INCLUDE_PRODUCT_H_
 #define MANAGE_STORE_INCLUDE_PRODUCT_H_
 
-#include <iomanip>
 #include <iostream>
 #include <string>
 #include <tuple>
 
 class Product{
 public:
-	Product();
-	Product(std::tuple<unsigned int, std::string, std::string, std::string, float>);
-	Product(const Product& other)=default;
-	Product(Product&& other)=default;
-	Product& operator=(Product const& other);
-	~Product();
-	bool operator==(Product const& other) const;
-	auto get_data() -> std::tuple<unsigned int, std::string, std::string, std::string, float>;
-	void print();
+  Product();
+  explicit Product(unsigned int id, std::string name, std::string category,
+		   unsigned int quantity, float price);
+  Product(Product const& other);  //copy constructor
+  Product(Product&& other) noexcept; //move constructor
+  Product& operator=(Product const& other); //copy asignment constructor
+  Product& operator=(Product&& other) noexcept; //move asignment constructor
+  ~Product();
+  bool operator==(Product const& other) const;
+  unsigned int GetId() const;
+  std::string GetName() const;
+  std::string GetCategory() const;
+  unsigned int GetQuantity() const;
+  float GetPrice() const;
+  void visit(void (*f)(unsigned int&,std::string&,std::string&,unsigned int&,float&));
 private:
-	std::tuple<unsigned int, std::string, std::string, std::string, float> data;
+  unsigned int id_;
+  std::string name_;
+  std::string category_;
+  unsigned int quantity_;
+  float price_;
 };
 #endif //MANAGE_STORE_INCLUDE_PRODUCT_H_
