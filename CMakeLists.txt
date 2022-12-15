@@ -1,3 +1,18 @@
 cmake_minimum_required(VERSION 3.22)
-project(tema)
-add_executable(tema1 main.cpp cmmdc.cpp isEven.cpp)
+
+
+project(tema2)
+add_executable(tema2 main.cpp product.cpp store.cpp XMLObject.cpp)
+
+
+find_library(RAPIDXML_LIB rapidXML NAMES rapidXML librapidxml-dev rapidxml)
+if (RAPIDXML_LIB)
+    message(FATAL_ERROR "XML library not found")
+else()
+    message(STATUS "library found")
+endif()
+
+add_library(RAPIDXML_LIB INTERFACE)
+target_include_directories(RAPIDXML_LIB INTERFACE /usr/include/rapidxml)
+target_link_libraries(tema2 PRIVATE RAPIDXML_LIB)
+

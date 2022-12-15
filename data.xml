@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <product>
+        <name type="string"> Milk</name>
+        <price type="double"> 10.00 </price>
+    </product>
+    <product>
+        <name type="string"> Honey</name>
+        <price type="double"> 3.99 </price>
+    </product>
+    <product>
+        <name type="string"> Apple pie</name>
+        <price type="double"> 35.75 </price>
+    </product>
+    <product>
+        <name type="string"> Charger</name>
+        <price type="double"> 70.00 </price>
+    </product>
+</products>

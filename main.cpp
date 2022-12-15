@@ -1,9 +1,10 @@
-#include <iostream>
-#include "functions.h"
+#include "store.hpp"
+#include "XMLObject.hpp"
 
 int main()
 {
-    isEven(5);
-    std::cout << "Cmmdc: " <<cmmdc(10,2) << '\n';
-  
+    XMLReader reader("../data.xml");
+    Store store("Market", reader.read());
+
+    store.printProducts();
 }
