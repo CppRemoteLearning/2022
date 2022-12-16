@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Store>
+    <product>
+        <id>1</id>
+        <name>apple</name>
+        <type>fruit</type>
+        <price>3</price>
+    </product>
+    <product>
+        <id>2</id>
+        <name>water</name>
+        <type>drinks</type>
+        <price>5</price>
+    </product>
+</Store>
