@@ -12,7 +12,7 @@ Product::Product(const Product &p): name(p.name), price(p.price), quantity(p.qua
 
 Product::Product(Product&& p) = default; // Move Constructor
 
-Product& Product::operator=(Product &p) { // Copy Assignment Operator
+Product& Product::operator=(const Product &p) { // Copy Assignment Operator
     name = p.name;
     price = p.price;
     quantity = p.quantity;

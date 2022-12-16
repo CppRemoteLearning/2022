@@ -10,6 +10,7 @@ Store::Store() {
 Store::Store(std::string name, std::vector<Product> products) {
     name = name;
     products = products;
+    std::cout << "Store created: Name = " << name << std::endl;
 }
 
 std::string Store::getName() {
@@ -29,10 +30,11 @@ void Store::setProducts(std::vector<Product> products) {
 }
 
 std::string Store::toString() {
-    std::string stringOfProducts = "";
+    std::string stringOfProducts;
     for(Product product : products) {
         stringOfProducts += product.toString();
     }
-    return "Name of the store: " + name + "\n " + stringOfProducts;
+    std::cout << stringOfProducts;
+    return "Store: Name = " + name + stringOfProducts;
 }
 

@@ -14,7 +14,7 @@ class Product{
 
         Product(const Product &p); // Copy Constructor
 
-        Product& operator=(Product &p); // Copy Assignment Operator
+        Product& operator=(const Product &p); // Copy Assignment Operator
 
         Product(Product&& p); // Move Constructor
 
