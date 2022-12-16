@@ -1,13 +1,7 @@
-#include <iostream>
-#include <string.h>
-#include <vector>
 #include "../product/Product.h"
+#include <vector>
 
 class Store {
-    private:
-        std::string name;
-        std::vector<Product> products;
-
     public:
         Store();
 
@@ -22,4 +16,8 @@ class Store {
         void setProducts(std::vector<Product> _products);
 
         std::string toString();
+
+    private:
+        std::string name;
+        std::vector<Product> products;
 };

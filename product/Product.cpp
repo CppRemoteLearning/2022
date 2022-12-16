@@ -1,6 +1,4 @@
 #include "Product.h"
-#include <iostream>
-#include <string.h>
 
 Product::Product(): name("-"), price(0), quantity(0) {}
 
@@ -8,18 +6,27 @@ Product::Product(std::string name, float price, int quantity): name(name), price
     std::cout << "Product created: Name = " << name << ", Price = " << price << ", Quantity = " << quantity << std::endl; 
 } 
 
-Product::Product(const Product &p): name(p.name), price(p.price), quantity(p.quantity) {}  // Copy Constructor
+Product::Product(const Product &other): name(other.name), price(other.price), quantity(other.quantity) {}  // Copy Constructor
 
-Product::Product(Product&& p) = default; // Move Constructor
+Product::Product(Product&& other) noexcept { // Move Constructor
+    this->name = std::move(other.name);
+    this->price = std::move(other.price);
+    this->quantity = std::move(other.quantity);
+}
 
-Product& Product::operator=(const Product &p) { // Copy Assignment Operator
-    name = p.name;
-    price = p.price;
-    quantity = p.quantity;
+Product &Product::operator=(const Product &other) { // Copy Assignment Operator
+    this->name = other.name;
+    this->price = other.price;
+    this->quantity = other.quantity;
     return *this;
 } 
 
-Product& Product::operator=(Product &&p) = default;  // Move Assignment Operator
+Product& Product::operator=(Product&& other) noexcept { // Move Assignment Operator
+    this->name = std::move(other.name);
+    this->price = std::move(other.price);
+    this->quantity = std::move(other.quantity);
+    return *this;
+}
 
 Product::~Product() {}  // Destructor
 

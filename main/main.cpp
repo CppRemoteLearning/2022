@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../store/Store.h"
 
 int main() {

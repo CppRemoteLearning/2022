@@ -2,23 +2,18 @@
 #include <string.h>
 
 class Product{
-    private:
-        std::string name;
-        float price;
-        int quantity;
-
     public:
         Product();
 
         Product(std::string name, float price, int quantity);
 
-        Product(const Product &p); // Copy Constructor
+        Product(const Product& other); // Copy Constructor
 
-        Product& operator=(const Product &p); // Copy Assignment Operator
+        Product& operator=(const Product& other); // Copy Assignment Operator
 
-        Product(Product&& p); // Move Constructor
+        Product(Product&& other) noexcept; // Move Constructor
 
-        Product& operator=(Product &&p); // Move Assignment Operator
+        Product& operator=(Product&& other) noexcept; // Move Assignment Operator
 
         ~Product(); // Destructor
 
@@ -31,4 +26,9 @@ class Product{
         void setQuantity(int _quantity);
 
         std::string toString();
+
+    private:
+        std::string name;
+        float price;
+        int quantity;
     };

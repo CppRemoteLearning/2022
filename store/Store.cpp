@@ -1,7 +1,4 @@
 #include "Store.h"
-#include <iostream>
-#include <string.h>
-#include <vector>
 
 Store::Store() {
     name = "-";
@@ -38,6 +35,5 @@ std::string Store::toString() {
     for(Product product : products) {
         stringOfProducts += product.toString();
     }
-    return "Store: Name = " + name + "\n" + stringOfProducts;
+    return "Store: Name = " + name + ", containing the following products:\n" + stringOfProducts;
 }
-
