@@ -14,7 +14,7 @@ public:
     std::string getMsg() { return mesaj; }
 };
 
-class repo
+class Repo
 {
 private:
     std::vector<Produs> v;
@@ -22,14 +22,7 @@ private:
     std::string path_to_file;
 
 public:
-    void store(Produs a)
-    {
-        for (auto &s : v)
-            if (s.getId() == a.getId())
-                throw RepoException("Id existent!\n");
-        v.push_back(a);
-        storeToFile(path_to_file);
-    };
+    void store(Produs a);
 
     void loadFromFile();
 
@@ -37,6 +30,6 @@ public:
 
     std::vector<Produs> getAll(std::string path_to_file);
 
-    repo(std::string fName) : fName{fName} { loadFromFile(); }
+    Repo(std::string fName) : fName{fName} { loadFromFile(); }
 };
 #endif

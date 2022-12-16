@@ -44,20 +44,7 @@ public:
     //destructor
     ~Produs() {}
 
-    void validare()
-    {
-        std::string error = "";
-        if (this->getId() < 0)
-            error += "Invalid id!\n";
-        if (this->getNume() == "")
-            error += "Invalid name!\n";
-        if (this->getTip() == "")
-            error += "Invalid type!\n";
-        if (this->getPret() < 1.0)
-            error += "Invalid price!\n";
-        if (error != "")
-            throw DomainException(error);
-    }
+    void validare();
 };
 
 #endif

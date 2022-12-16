@@ -3,7 +3,16 @@
 #include <fstream>
 #include "xml.h"
 
-void repo::loadFromFile()
+void Repo::store(Produs a)
+{
+    for (auto &s : v)
+        if (s.getId() == a.getId())
+            throw RepoException("Id existent!\n");
+    v.push_back(a);
+    storeToFile(path_to_file);
+};
+
+void Repo::loadFromFile()
 {
     v.clear();
     std::ifstream fin(fName);
@@ -18,12 +27,12 @@ void repo::loadFromFile()
     }
     fin.close();
 }
-void repo::storeToFile(std::string path_to_file)
+void Repo::storeToFile(std::string path_to_file)
 {
     XMLHandler Handler = XMLHandler(path_to_file, v);
     Handler.writeToFile();
 }
-std::vector<Produs> repo::getAll(std::string path_to_file)
+std::vector<Produs> Repo::getAll(std::string path_to_file)
 {
     
     XMLHandler Handler = XMLHandler(path_to_file);

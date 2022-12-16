@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 
     
 
-    repo r{"list.txt"};
+    Repo r{"list.txt"};
     Service serv{r};
     Consola ui{serv};
     ui.Start();

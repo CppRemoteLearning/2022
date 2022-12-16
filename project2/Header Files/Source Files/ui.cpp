@@ -18,7 +18,7 @@ void Consola::pretty_print(Produs* el) {
 
 void Consola::Start() {
 	AfiseazaMeniu();
-	const Service* pointer_service = &service;
+	
 	std::string path_to_file = "D:\lenovo1\D\Facultate\AN1 SEMESTRU2\OOP\ngarro2\ngarro2\list.xml";
 
 	while (true) {
