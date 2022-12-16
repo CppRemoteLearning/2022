@@ -25,13 +25,9 @@ StoreManager::StoreManager(StoreManager const& other)
 
 //move constructor
 StoreManager::StoreManager(StoreManager&& other){ 
-  data_.clear();
   no_of_products_ = other.no_of_products_;
   name_ = other.name_;
-  data_.reserve(no_of_products_);
-
-  for(auto iterator : other.data_)
-    data_.push_back(iterator);
+  data_ = other.data_;
 }
 
 //copy asignment constructor
@@ -39,10 +35,7 @@ StoreManager& StoreManager::operator=(StoreManager const& other){
   if(this != &other){
     no_of_products_ = other.no_of_products_;
     name_ = other.name_;
-    data_.reserve(no_of_products_);
-
-    for(auto const& iterator : other.data_)
-      data_.push_back(iterator);
+    data_ = other.data_;
   }
   return *this;
 }
@@ -50,13 +43,9 @@ StoreManager& StoreManager::operator=(StoreManager const& other){
 //move asignment constructor
 StoreManager& StoreManager::operator=(StoreManager&& other){
   if(this != &other){
-    data_.clear();
     no_of_products_ = other.no_of_products_;
     name_ = other.name_;
-    data_.reserve(no_of_products_);
-
-    for(auto const& iterator : other.data_)
-      data_.push_back(iterator);
+    data_ = other.data_;
   }
   return *this;
 }

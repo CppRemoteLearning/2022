@@ -15,11 +15,7 @@ XMLParser::XMLParser(XMLParser&& other): data_(other.data_.begin(), other.data_.
 //copy asignment constructor
 XMLParser& XMLParser::operator=(XMLParser const& other){
   if(this != &other){
-    data_.clear();
-    data_.reserve(other.data_.capacity());
-    
-    for(auto const& iterator : other.data_)
-      data_.push_back(iterator);
+    data_ = other.data_;
   }
   return *this;
 }
@@ -27,20 +23,12 @@ XMLParser& XMLParser::operator=(XMLParser const& other){
 //move asignment constructor
 XMLParser& XMLParser::operator=(XMLParser&& other){
   if(this != &other){
-    data_.clear();
-    data_.reserve(other.data_.capacity());
-
-    for(auto const& iterator : other.data_)
-      data_.push_back(iterator);
+    data_ = other.data_;
   }
   return *this;
 }
 
-XMLParser::~XMLParser(){
-  if(!data_.empty()){
-    data_.clear();
-  }
-}
+XMLParser::~XMLParser(){}
 
 std::vector<Product> XMLParser::Parse(std::vector<std::string> const& file_content){
   std::vector<std::string> unconverted_data;
@@ -86,13 +74,8 @@ Product XMLParser::ConvertData(std::vector<std::string> const& unconverted_data)
 }
 
 bool XMLParser::CheckData(std::vector<std::string> const& data) const{
-  try{
-    if(data.size()==5)
-      return true;
-    throw std::invalid_argument("File contain incomplete product data set. Check it!");
+  if(data.size()==5){
+    return true;
   }
-  catch(const std::invalid_argument& event){
-    std::cout << event.what() << std::endl;
-    return false;
-  }
+  return false;
 }

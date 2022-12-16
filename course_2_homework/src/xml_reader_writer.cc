@@ -12,23 +12,16 @@ XMLReaderWriter::XMLReaderWriter(XMLReaderWriter const& other)
     : path_(other.path_), content_(other.content_.begin(), other.content_.end()){}
 
 //move constructor
-XMLReaderWriter::XMLReaderWriter(XMLReaderWriter&& other): path_(other.path_){
-  content_.reserve(other.content_.capacity());
-
-  for(auto const& iterator : other.content_)
-    content_.push_back(iterator);
+XMLReaderWriter::XMLReaderWriter(XMLReaderWriter&& other){
+  path_ = other.path_;
+  content_ = other.content_;
 }
 
 //copy asignment constructor
 XMLReaderWriter& XMLReaderWriter::operator=(XMLReaderWriter const& other){
   if(this != &other){
-    content_.clear();
-
     path_ = other.path_;
-    content_.reserve(other.content_.capacity());
-
-    for(auto const& iterator : other.content_)
-      content_.push_back(iterator);
+    content_ = other.content_;
   }
   return *this;
 }
@@ -36,22 +29,13 @@ XMLReaderWriter& XMLReaderWriter::operator=(XMLReaderWriter const& other){
 //move asignment constructor
 XMLReaderWriter& XMLReaderWriter::operator=(XMLReaderWriter&&  other){
   if(this != &other){
-    content_.clear();
     path_ = other.path_;
-    content_.reserve(other.content_.capacity());
-
-    for(auto const& iterator : other.content_)
-      content_.push_back(iterator);
+    content_ = other.content_;
   }
   return *this;
 }
 
-XMLReaderWriter::~XMLReaderWriter(){
-  if(!content_.empty()){
-    content_.clear();
-    path_ = std::string();
-  }
-}
+XMLReaderWriter::~XMLReaderWriter(){}
 
 std::vector<std::string> XMLReaderWriter::ReadContent(){
   std::ifstream input_file;
