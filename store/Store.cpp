@@ -1,4 +1,5 @@
 #include "Store.h"
+#include <iostream>
 
 Store::Store() {
     name = "-";

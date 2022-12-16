@@ -1,4 +1,5 @@
 #include "Product.h"
+#include <iostream>
 
 Product::Product(): name("-"), price(0), quantity(0) {}
 
