@@ -16,5 +16,4 @@ int main(){
     r.add(Product("salad", 25));
 
     rw.write();
-
 }
