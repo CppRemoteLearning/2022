@@ -6,8 +6,8 @@
 class Product
 {
 public:
-  Product(std::string name, double price);
-  ~Product() {}
+  Product(std::string name, double price): name_(name), price_(price) {}
+  ~Product() = default;
   Product (const Product& other);
   Product (Product&& other);
   Product& operator=(const Product& other);

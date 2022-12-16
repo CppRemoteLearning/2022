@@ -2,13 +2,6 @@
 #include <iostream>
 #include <utility>
 
-Product::Product(std::string name, double price)
-{
-  std::cout << "Product constructor called." << std::endl;
-  name_ = name;
-  price_ = price;
-}
-
 Product::Product(const Product& other)
 {
   std::cout << "Product copy constructor called." << std::endl;

@@ -2,33 +2,15 @@
 #include <iostream>
 #include <fstream>
 
-XMLHandler::XMLHandler(std::string file)
-{
-  std::cout << "XMLHandler constructor called." << std::endl;
-  path_to_file_ = file;
-}
-
-XMLHandler::XMLHandler(std::string file, std::vector<std::pair<std::string, double>> file_content)
-
-{
-  std::cout << "XMLHandler constructor called." << std::endl;
-  path_to_file_ = file;
-  file_content_ = file_content;
-}
-
 XMLHandler::XMLHandler(std::string file, std::list<Product> file_content)
 {
   path_to_file_ = file;
-  for (auto it = file_content.begin(); it != file_content.end(); ++it)
+  std::list<Product>::const_iterator it;
+  for (it = file_content.begin(); it != file_content.end(); ++it)
   {
-    file_content_.push_back(std::make_pair((*it).getName(), (*it).getPrice()));
+    file_content_.push_back(std::make_pair(it->getName(), it->getPrice()));
   }
 }
-
-// XMLHandler::~XMLHandler()
-// {
-//   std::cout << "XMLHandler destructor called." << std::endl;
-// }
 
 XMLHandler::XMLHandler(const XMLHandler& other)
 {
@@ -65,30 +47,28 @@ void XMLHandler::readFromFile()
 {
   std::cout << "XMLHandler::readFromFile called." << std::endl;
   std::ifstream xmlFile;
-  std::string line;
-  std::vector<std::pair<std::string, double>> values;
-  std::pair<std::string, double> tempPair;
   xmlFile.open(path_to_file_);
   if (xmlFile.is_open())
   {
+    std::string line;
     while(getline(xmlFile, line))
     {
       if (line.find("<name>") != std::string::npos)
       {
         int beg = line.find("name") + 5;
         int end = line.find("</");
-        tempPair.first = line.substr(beg, end-beg);
+        //overkill
+        file_content_.push_back(std::make_pair(line.substr(beg, end-beg), 0.0));
       }
       else if (line.find("price") != std::string::npos)
       {
         int beg = line.find("price") + 6;
         int end = line.find("</");
-        tempPair.second = std::stod(line.substr(beg, end-beg));
-        values.push_back(tempPair);
+        //overkill
+        file_content_[file_content_.size()-1].second = std::stod(line.substr(beg, end-beg));
       }
     }
     xmlFile.close();
-    file_content_ = values;
   }
   else
   {
@@ -101,12 +81,19 @@ void XMLHandler::writeToFile()
   std::cout << "XMLHandler::writeToFile called." << std::endl;
   std::ofstream xmlFile;
   xmlFile.open(path_to_file_, std::ofstream::out | std::ofstream::trunc);
-  xmlFile << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Store>\n";
-  for (auto it = file_content_.begin(); it != file_content_.end(); ++it)
-  {
-    xmlFile << "\t<product>\n\t\t<name>" << (*it).first << "</name>\n";
-    xmlFile << "\t\t<price>" << (*it).second << "</price>\n\t</product>\n";
+  if (xmlFile.is_open()){
+    xmlFile << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Store>\n";
+    std::vector<std::pair<std::string, double>>::const_iterator it;
+    for (it = file_content_.begin(); it != file_content_.end(); ++it)
+    {
+      xmlFile << "\t<product>\n\t\t<name>" << it->first << "</name>\n";
+      xmlFile << "\t\t<price>" << it->second << "</price>\n\t</product>\n";
+    }
+    xmlFile << "</Store>";
+    xmlFile.close();
   }
-  xmlFile << "</Store>";
-  xmlFile.close();
+  else
+  {
+    std::cout << "Cannot open the file." << std::endl;
+  }
 }

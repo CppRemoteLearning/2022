@@ -8,14 +8,13 @@
 class ProductManager
 {
 public:
-  ProductManager();
-  ProductManager(std::list<Product> prods);
-  ~ProductManager() {}
+  ProductManager() = default;
+  ProductManager(std::list<Product> prods): productList_(prods) {}
+  ~ProductManager() = default;
   ProductManager(const ProductManager& other);
   ProductManager(ProductManager&& other);
   ProductManager& operator=(const ProductManager& other);
   ProductManager& operator=(ProductManager&& other);
-  //std::ostream& operator<<(std::ostream& os);
   void removeFromStore(Product item);
   void addToStore(Product item);
   void saveToFile(std::string path_to_file);

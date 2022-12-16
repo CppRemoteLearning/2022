@@ -16,10 +16,10 @@ int main()
   Store.printProducts();
   Store.removeFromStore(Product("Mouse", 150.0));
   Store.printProducts();
-  Store.saveToFile("storeTest.xml");
+  Store.saveToFile("../storeTest.xml");
 
   ProductManager Store2;
-  Store2.readFromFile("store.xml");
+  Store2.readFromFile("../store.xml");
   Store2.printProducts();
 
 }  

@@ -3,18 +3,6 @@
 #include <iostream>
 #include <algorithm>
 
-
-ProductManager::ProductManager()
-{
-  std::cout << "ProductManager constructor called." << std::endl;
-}
-
-ProductManager::ProductManager(std::list<Product> prods)
-{
-  std::cout << "ProductManager constructor called." << std::endl;
-  productList_ = prods;
-}
-
 ProductManager::ProductManager(const ProductManager& other)
 {
   std::cout << "ProductManager copy constructor called." << std::endl;
@@ -61,9 +49,10 @@ void ProductManager::removeFromStore(Product item)
 
 void ProductManager::printProducts()
 {
-  for (auto it = productList_.begin(); it != productList_.end(); ++it)
+  std::list<Product>::const_iterator it;
+  for (it = productList_.begin(); it != productList_.end(); ++it)
   {
-    std::cout << "Name = "<< (*it).getName() << "\nPrice = " << (*it).getPrice() << std::endl;
+    std::cout << "Name = "<< it->getName() << "\nPrice = " << it->getPrice() << std::endl;
   }
 }
 
@@ -78,9 +67,10 @@ void ProductManager::readFromFile(std::string path_to_file)
   XMLHandler Handler = XMLHandler(path_to_file);
   Handler.readFromFile();
   std::vector<std::pair<std::string, double>> values = Handler.getValues();
+  std::vector<std::pair<std::string, double>>::const_iterator it;
   
-  for (auto it = values.begin(); it != values.end(); ++it)
+  for (it = values.begin(); it != values.end(); ++it)
   {
-    productList_.push_back(Product((*it).first, (*it).second));
+    productList_.push_back(Product(it->first, it->second));
   }
 }

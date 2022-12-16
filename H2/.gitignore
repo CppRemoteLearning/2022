@@ -1,7 +1,2 @@
 .vscode/
 build/
-CMakeFiles/
-*.cmake
-CMakeCache.txt
-Makefile
-main
