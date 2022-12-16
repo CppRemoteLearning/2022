@@ -1,17 +1,20 @@
 #include "model/Product.h"
 #include "repository/Repository.h"
+#include "readWrite/ReadWrite.h"
 #include <iostream>
 
-using namespace std;
-
-/*Next step: to implement xml read/write class*/
-
 int main(){
-    Repository r;
-    r.add(Product("Lemons", 133));
-    r.add(Product("Yogurt", 55));
+    std::string _file = "/home/bianca/2022/file.txt";
+    Repository r(_file);
+    ReadWrite rw(r);
+    rw.read();
 
-    for(auto p : r.getAll()){
-        cout<<p.getName()<<" "<<p.getWeight()<<"\n";
+    for(auto p : r.getProducts()){
+        std::cout<<p.getName()<<" "<<p.getWeight()<<"\n";
     }
+
+    r.add(Product("salad", 25));
+
+    rw.write();
+
 }
