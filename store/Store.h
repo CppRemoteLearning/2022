@@ -17,9 +17,9 @@ class Store {
 
         std::vector<Product> getProducts();
 
-        void setName(std::string name);
+        void setName(std::string _name);
 
-        void setProducts(std::vector<Product> products);
+        void setProducts(std::vector<Product> _products);
 
         std::string toString();
 };

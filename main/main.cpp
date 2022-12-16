@@ -1,5 +1,4 @@
 #include <iostream>
-// #include "../product/Product.h"
 #include "../store/Store.h"
 
 int main() {
@@ -17,13 +16,8 @@ int main() {
     products1.push_back(p5);
     products1.push_back(p4);
 
-    std::string stringOfProducts = "";
-    for(Product product : products1) {
-        stringOfProducts += product.toString();
-    }
-    std::cout << stringOfProducts;
-
     Store s1 = Store("Store1", products1);
+
     std::cout << s1.toString();
 
 

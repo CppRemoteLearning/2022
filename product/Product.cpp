@@ -35,16 +35,16 @@ int Product::getQuantity() {
     return quantity;
 }
 
-void Product::setName(std::string name) {
-    name = name;
+void Product::setName(std::string _name) {
+    name = _name;
 }
 
-void Product::setPrice(float price) {
-    price = price;
+void Product::setPrice(float _price) {
+    price = _price;
 }
 
-void Product::setQuantity(int quantity) {
-    quantity = quantity;
+void Product::setQuantity(int _quantity) {
+    quantity = _quantity;
 }
 
 std::string Product::toString() {

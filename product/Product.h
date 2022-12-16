@@ -26,9 +26,9 @@ class Product{
         float getPrice();
         int getQuantity();
 
-        void setName(std::string name);
-        void setPrice(float price);
-        void setQuantity(int quantity);
+        void setName(std::string _name);
+        void setPrice(float _price);
+        void setQuantity(int _quantity);
 
         std::string toString();
     };
