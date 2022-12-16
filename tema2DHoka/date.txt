@@ -1,0 +1,4 @@
+apa 5 10
+sare 13 7
+popcorn 9 10
+jucarii 13 23
