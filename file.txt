@@ -1,0 +1,4 @@
+lemons, 133
+yogurt, 55
+salad, 25
+salad, 25
