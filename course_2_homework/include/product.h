@@ -1,9 +1,8 @@
 #ifndef MANAGE_STORE_INCLUDE_PRODUCT_H_
 #define MANAGE_STORE_INCLUDE_PRODUCT_H_
 
-#include <iostream>
+#include <functional>
 #include <string>
-#include <tuple>
 
 class Product{
 public:
@@ -11,9 +10,9 @@ public:
   explicit Product(unsigned int id, std::string name, std::string category,
 		   unsigned int quantity, float price);
   Product(Product const& other);  //copy constructor
-  Product(Product&& other) noexcept; //move constructor
+  Product(Product&& other); //move constructor
   Product& operator=(Product const& other); //copy asignment constructor
-  Product& operator=(Product&& other) noexcept; //move asignment constructor
+  Product& operator=(Product&& other); //move asignment constructor
   ~Product();
   bool operator==(Product const& other) const;
   bool operator<(Product const& other) const;
@@ -27,7 +26,8 @@ public:
   void SetCategory(std::string const& category);
   void SetQuantity(unsigned int const& quantity);
   void SetPrice(float const& price);
-  void visit(void (*f)(unsigned int&,std::string&,std::string&,unsigned int&,float&));
+  void visit(std::function<void(unsigned int&, std::string&, std::string&, 
+	     unsigned int&, float&)> f);
 private:
   unsigned int id_;
   std::string name_;

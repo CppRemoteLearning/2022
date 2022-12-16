@@ -2,6 +2,10 @@
 
 #include <algorithm>
 #include <iomanip>
+#include <iostream>
+
+#include "../include/xml_reader_writer.h"
+#include "../include/xml_parser.h"
 
 StoreManager::StoreManager():data_(std::vector<Product>()),no_of_products_(0),name_(std::string()){}
 
@@ -20,37 +24,31 @@ StoreManager::StoreManager(StoreManager const& other)
       name_(other.name_){}
 
 //move constructor
-StoreManager::StoreManager(StoreManager&& other) noexcept
-    : data_(std::vector<Product>()), no_of_products_(0), name_(std::string()){
+StoreManager::StoreManager(StoreManager&& other){ 
+  data_.clear();
   no_of_products_ = other.no_of_products_;
   name_ = other.name_;
   data_.reserve(no_of_products_);
 
   for(auto iterator : other.data_)
     data_.push_back(iterator);
-
-  other.no_of_products_ = 0;
-  other.name_ = std::string();
-  other.data_.clear();
 }
 
 //copy asignment constructor
 StoreManager& StoreManager::operator=(StoreManager const& other){
   if(this != &other){
-    data_.clear();
-
     no_of_products_ = other.no_of_products_;
     name_ = other.name_;
     data_.reserve(no_of_products_);
 
     for(auto const& iterator : other.data_)
-	    data_.push_back(iterator);
+      data_.push_back(iterator);
   }
   return *this;
 }
 
 //move asignment constructor
-StoreManager& StoreManager::operator=(StoreManager&& other) noexcept{
+StoreManager& StoreManager::operator=(StoreManager&& other){
   if(this != &other){
     data_.clear();
     no_of_products_ = other.no_of_products_;
@@ -58,11 +56,7 @@ StoreManager& StoreManager::operator=(StoreManager&& other) noexcept{
     data_.reserve(no_of_products_);
 
     for(auto const& iterator : other.data_)
-	    data_.push_back(iterator);
-
-    other.no_of_products_ = 0;
-    other.name_ = std::string();
-    other.data_.clear();
+      data_.push_back(iterator);
   }
   return *this;
 }
@@ -71,7 +65,6 @@ StoreManager::~StoreManager(){
   if(!data_.empty()){
     data_.clear();
     no_of_products_ = 0;
-    name_ = std::string();
   }
 }
 

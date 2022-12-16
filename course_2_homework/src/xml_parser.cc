@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "../include/xml_parser.h"
 
 XMLParser::XMLParser():data_(std::vector<Product>()){}
@@ -8,11 +10,7 @@ XMLParser::XMLParser(std::vector<Product> const& data):data_(data.begin(), data.
 XMLParser::XMLParser(XMLParser const& other):data_(other.data_.begin(), other.data_.end()){}
 
 //move constructor
-XMLParser::XMLParser(XMLParser&& other) noexcept: data_(std::vector<Product>()){
-  for(auto const& iterator : other.data_)
-    data_.push_back(iterator);
-  other.data_.clear();
-}
+XMLParser::XMLParser(XMLParser&& other): data_(other.data_.begin(), other.data_.end()){}
 
 //copy asignment constructor
 XMLParser& XMLParser::operator=(XMLParser const& other){
@@ -27,7 +25,7 @@ XMLParser& XMLParser::operator=(XMLParser const& other){
 }
 
 //move asignment constructor
-XMLParser& XMLParser::operator=(XMLParser&& other) noexcept{
+XMLParser& XMLParser::operator=(XMLParser&& other){
   if(this != &other){
     data_.clear();
     data_.reserve(other.data_.capacity());
@@ -54,7 +52,8 @@ std::vector<Product> XMLParser::Parse(std::vector<std::string> const& file_conte
     while(flag){
       iterator++;
       if(iterator->find("</product>") != std::string::npos){
-        data_.push_back(ConvertData(unconverted_data));
+	if(CheckData(unconverted_data))
+	  data_.push_back(ConvertData(unconverted_data));
         unconverted_data.clear();
         flag=false;
         continue;
@@ -77,9 +76,23 @@ std::string XMLParser::GetInfo(std::string const& row){
 }
 
 Product XMLParser::ConvertData(std::vector<std::string> const& unconverted_data){
-  unsigned int id = std::stoul(unconverted_data[0]);
-  unsigned int quantity = std::stoul(unconverted_data[3]);
-  float price = std::stof(unconverted_data[4]);
-  Product product(id,unconverted_data[1],unconverted_data[2],quantity, price);
+  Product product;
+  product.SetId(std::stoul(unconverted_data[0]));
+  product.SetName(unconverted_data[1]);
+  product.SetCategory(unconverted_data[2]);
+  product.SetQuantity(std::stoul(unconverted_data[3]));
+  product.SetPrice(std::stof(unconverted_data[4]));
   return product;
+}
+
+bool XMLParser::CheckData(std::vector<std::string> const& data) const{
+  try{
+    if(data.size()==5)
+      return true;
+    throw std::invalid_argument("File contain incomplete product data set. Check it!");
+  }
+  catch(const std::invalid_argument& event){
+    std::cout << event.what() << std::endl;
+    return false;
+  }
 }

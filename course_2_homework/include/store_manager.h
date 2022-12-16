@@ -1,12 +1,9 @@
 #ifndef STORE_INCLUDE_STORE_MANAGER_H_
 #define STORE_INCLUDE_STORE_MANAGER_H_
 
-#include <iostream>
 #include <string>
 #include <vector>
 
-#include "xml_reader_writer.h"
-#include "xml_parser.h"
 #include "product.h"
 
 class StoreManager{
@@ -15,9 +12,9 @@ public:
   explicit StoreManager(std::string name, std::vector<Product> data);
   StoreManager(std::string const& path);
   StoreManager(StoreManager const& other);  //copy constructor
-  StoreManager(StoreManager&& other) noexcept;  //move constructor
+  StoreManager(StoreManager&& other);  //move constructor
   StoreManager& operator=(StoreManager const& other);  //copy assignment constructor
-  StoreManager& operator=(StoreManager&& other) noexcept;  //move assignment constructor
+  StoreManager& operator=(StoreManager&& other);  //move assignment constructor
   ~StoreManager();
   void LoadData(std::string const& path);
   void ExportToXML(std::string const& path, std::string const& file_name);

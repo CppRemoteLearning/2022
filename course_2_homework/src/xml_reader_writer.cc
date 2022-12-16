@@ -1,6 +1,6 @@
 #include "../include/xml_reader_writer.h"
 
-XMLReaderWriter::XMLReaderWriter():path_(NULL),content_(std::vector<std::string>()){}
+XMLReaderWriter::XMLReaderWriter():path_(std::string()),content_(std::vector<std::string>()){}
 
 XMLReaderWriter::XMLReaderWriter(std::string const& path): path_(path){}
 
@@ -12,16 +12,11 @@ XMLReaderWriter::XMLReaderWriter(XMLReaderWriter const& other)
     : path_(other.path_), content_(other.content_.begin(), other.content_.end()){}
 
 //move constructor
-XMLReaderWriter::XMLReaderWriter(XMLReaderWriter&& other) noexcept
-   : path_(NULL), content_(std::vector<std::string>()){
-  path_ = other.path_;
+XMLReaderWriter::XMLReaderWriter(XMLReaderWriter&& other): path_(other.path_){
   content_.reserve(other.content_.capacity());
 
   for(auto const& iterator : other.content_)
     content_.push_back(iterator);
-
-  other.path_ = std::string();
-  other.content_.clear();
 }
 
 //copy asignment constructor
@@ -39,7 +34,7 @@ XMLReaderWriter& XMLReaderWriter::operator=(XMLReaderWriter const& other){
 }
 
 //move asignment constructor
-XMLReaderWriter& XMLReaderWriter::operator=(XMLReaderWriter&&  other) noexcept{
+XMLReaderWriter& XMLReaderWriter::operator=(XMLReaderWriter&&  other){
   if(this != &other){
     content_.clear();
     path_ = other.path_;
@@ -47,14 +42,16 @@ XMLReaderWriter& XMLReaderWriter::operator=(XMLReaderWriter&&  other) noexcept{
 
     for(auto const& iterator : other.content_)
       content_.push_back(iterator);
-
-    other.path_ = std::string();
-    other.content_.clear();
   }
   return *this;
 }
 
-XMLReaderWriter::~XMLReaderWriter(){}
+XMLReaderWriter::~XMLReaderWriter(){
+  if(!content_.empty()){
+    content_.clear();
+    path_ = std::string();
+  }
+}
 
 std::vector<std::string> XMLReaderWriter::ReadContent(){
   std::ifstream input_file;

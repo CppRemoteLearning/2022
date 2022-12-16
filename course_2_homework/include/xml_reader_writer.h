@@ -13,9 +13,9 @@ public:
   XMLReaderWriter(std::string const& path);
   XMLReaderWriter(std::string const& path, std::vector<std::string> content);
   XMLReaderWriter(XMLReaderWriter const& other);  //copy constructor
-  XMLReaderWriter(XMLReaderWriter&& other) noexcept; //move constructor
+  XMLReaderWriter(XMLReaderWriter&& other); //move constructor
   XMLReaderWriter& operator=(XMLReaderWriter const& other);  //copy asignment constructor
-  XMLReaderWriter& operator=(XMLReaderWriter&& other) noexcept; //move asignment constructor
+  XMLReaderWriter& operator=(XMLReaderWriter&& other); //move asignment constructor
   ~XMLReaderWriter();
   std::vector<std::string> ReadContent();
   void WriteContent(std::vector<Product> const& data, std::string const& name);

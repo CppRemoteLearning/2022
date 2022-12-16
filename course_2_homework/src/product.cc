@@ -1,25 +1,21 @@
 #include "../include/product.h"
 
-Product::Product():id_(0),name_(NULL),category_(NULL),quantity_(0),price_(0){}
+Product::Product()
+    : id_(0), name_(std::string()), category_(std::string()), quantity_(0), price_(0){}
 
 Product::Product(unsigned int id, std::string name, std::string category, 
 		 unsigned int quantity, float price)
     : id_(id), name_(name), category_(category), quantity_(quantity), price_(price){}
 
 //copy constructor
-Product::Product(Product const& other)
+Product::Product(const Product& other)
     : id_(other.id_), name_(other.name_), category_(other.category_),
       quantity_(other.quantity_), price_(other.price_){}
 
 //move constructor
-Product::Product(Product&& other) noexcept
-    : id_(0), name_(std::string()), category_(std::string()), quantity_(0), price_(0){
-  id_ = other.id_;
-  name_ = other.name_;
-  category_ = other.category_;
-  quantity_ = other.quantity_;
-  price_ = other.price_;
-}
+Product::Product(Product&& other)
+    : id_(other.id_), name_(other.name_), category_(other.category_),
+      quantity_(other.quantity_), price_(other.price_){}
 
 //copy asignment constructor
 Product& Product::operator=(Product const& other){
@@ -34,7 +30,7 @@ Product& Product::operator=(Product const& other){
 }
 
 //move asignment constructor
-Product& Product::operator=(Product&& other) noexcept{
+Product& Product::operator=(Product&& other){
   if(this != &other){
     id_ = other.id_;
     name_ = other.name_;
@@ -100,6 +96,7 @@ void Product::SetPrice(float const& price){
   price_ = price;
 }
 
-void Product::visit(void (*f)(unsigned int&, std::string&, std::string&, unsigned int&, float&)){
+void Product::visit(std::function<void(unsigned int&, std::string&, std::string&,
+		    unsigned int&, float&)> f){
   f(id_, name_, category_, quantity_, price_);
 }
