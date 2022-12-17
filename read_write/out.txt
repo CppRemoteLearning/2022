@@ -3,4 +3,6 @@ Surubeltina 5.65 3
 Boloboc 7.85 10
 Topor 15.55 4
 Lopata 12.35 6
+FileIn FileIn FileIn
 Ruleta 9.25 18
+FileOut FileOut FileOut

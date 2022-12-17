@@ -22,12 +22,16 @@ int main() {
     // std::cout << s1.toString();
 
     std::string filePath = "/home/alexandrei11/2022/read_write/in.txt";
-    std::cout << readStringFromFile(filePath);
+    std::string fileContents = FileOperations::readStringFromFile(filePath); // Read
 
-    std::string fileContents = readStringFromFile(filePath);
-    fileContents += "Ruleta 9.25 18";
+    std::cout << "Am citit din fisier urmatoarele produse: \n" << fileContents << "\n";
+    
+    fileContents += "Ruleta 9.25 18\nFileOut FileOut FileOut";
+
     filePath = "/home/alexandrei11/2022/read_write/out.txt";
-    writeStringToFile(fileContents, filePath);
+    FileOperations::writeStringToFile(fileContents, filePath); // Write
+
+    std::cout << "Am scris in fisier urmatoarele produse: \n" << fileContents << "\n";
 
     return 0;
 }

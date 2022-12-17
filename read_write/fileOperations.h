@@ -1,6 +1,9 @@
 #include <fstream>
 #include <sstream>
 
-std::string readStringFromFile(std::string filePath);
+class FileOperations {
+    public:
+        static std::string readStringFromFile(std::string filePath);
 
-void writeStringToFile(std::string stringToWrite, std::string filePath);
+        static void writeStringToFile(std::string stringToWrite, std::string filePath);
+};

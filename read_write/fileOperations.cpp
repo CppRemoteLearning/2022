@@ -1,7 +1,7 @@
 #include "fileOperations.h"
 #include <iostream>
 
-std::string readStringFromFile(std::string filePath) {
+std::string FileOperations::readStringFromFile(std::string filePath) {
     std::ifstream file;
     std::string fileContents;
     file.open(filePath); // read mode
@@ -17,7 +17,7 @@ std::string readStringFromFile(std::string filePath) {
     return fileContents;
 }
 
-void writeStringToFile(std::string stringToWrite, std::string filePath) {
+void FileOperations::writeStringToFile(std::string stringToWrite, std::string filePath) {
     std::fstream file;
     file.open(filePath, std::ios::out); // write mode
     if(file.fail()) {
