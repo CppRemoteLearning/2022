@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Store>
+    <product>
+        <id>459812</id>
+        <name>Product_1</name>
+        <category>category_1</category>
+        <quantity>10000</quantity>
+        <price>5.2</price>
+    </product>
+    <product>
+        <id>437539</id>
+        <name>Product_2</name>
+        <category>category_2</category>
+        <quantity>235</quantity>
+        <price>12.5</price>
+    </product>
+    <product>
+        <id>425233</id>
+        <name>Product_3</name>
+        <category>category_3</category>
+        <quantity>98</quantity>
+        <price>25.49</price>
+    </product>
+    <product>
+        <id>124287</id>
+        <name>Product_4</name>
+        <category>category_4</category>
+        <quantity>141</quantity>
+        <price>132</price>
+    </product>
+</Store>
